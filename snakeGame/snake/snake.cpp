@@ -3,4 +3,5 @@
 void main()
 {
 	printf("test\n");
+	getchar();
 }
