@@ -14,6 +14,7 @@ void WelcomeUI();        //开始界面
 void SetCursorXY(int x,int y);      //设置光标位置
 void DrawWallInXYPos(int x,int y);  //在xy位置绘制墙壁
 void DrawBorder();       //绘制墙壁
+void CreateFood();       //创建食物
 
 typedef struct _SnakeBody
 {
@@ -24,6 +25,12 @@ typedef struct _SnakeBody
 
 snakeBody *head,*tail;
 
+struct Food
+{
+	int x;
+	int y;
+}food;
+
 char name[20];
 int score = 0;
 
@@ -33,6 +40,7 @@ int main()
 	system("mode con cols=100 lines=30");
 	WelcomeUI();
 	DrawBorder();
+	CreateFood();
 
 	getchar();
 	getchar();
@@ -123,4 +131,28 @@ void DrawBorder()
 	//DrawWallInXYPos(q->x,q->y);
 	//SetCursorXY(head->x,head->y);
 
+}
+
+void CreateFood()
+{
+	srand((int)time(NULL));
+label:
+	food.y = rand() % 25 + 1;
+	food.x = rand() % 53 + 2;
+	if(food.x % 2 != 0)
+	{
+		food.x = food.x + 1;
+	}
+	snakeBody *judge = head;
+	while(1)  //遍历排除蛇身重复
+	{
+		if(judge->next == NULL) break;
+		if(food.x == judge->x && food.y == judge->y)
+		{
+			goto label;
+		}
+		judge = judge->next;
+	}
+	SetCursorXY(food.x,food.y);
+	printf("⊙");
 }
