@@ -6,28 +6,30 @@
 --------------------Configuration: snake - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP28A9.tmp" with contents
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP1A79.tmp" with contents
 [
 /nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
 "D:\CAOHAO\MYLOVE\GITHUB\SMART\SNAKEGAME\snake\snake.cpp"
 ]
-Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP28A9.tmp" 
-Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP28AA.tmp" with contents
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP1A79.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP1A7A.tmp" with contents
 [
 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/snake.pdb" /debug /machine:I386 /out:"Debug/snake.exe" /pdbtype:sept 
 .\Debug\snake.obj
 .\Debug\StdAfx.obj
 ]
-Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP28AA.tmp"
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP1A7A.tmp"
 <h3>Output Window</h3>
 Compiling...
 snake.cpp
+d:\caohao\mylove\github\smart\snakegame\snake\snake.cpp(167) : warning C4101: 'c' : unreferenced local variable
+d:\caohao\mylove\github\smart\snakegame\snake\snake.cpp(183) : warning C4715: 'IsDead' : not all control paths return a value
 Linking...
 
 
 
 <h3>Results</h3>
-snake.exe - 0 error(s), 0 warning(s)
+snake.exe - 0 error(s), 2 warning(s)
 </pre>
 </body>
 </html>

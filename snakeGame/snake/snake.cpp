@@ -9,12 +9,18 @@
 #define left 'a'
 #define right 'd'
 #define stop 'p'
+const int GameOver = 0;
 
 void WelcomeUI();        //开始界面
 void SetCursorXY(int x,int y);      //设置光标位置
 void DrawWallInXYPos(int x,int y);  //在xy位置绘制墙壁
 void DrawBorder();       //绘制墙壁
 void CreateFood();       //创建食物
+int  SnakeMoveControl(); //控制蛇的移动
+bool IsDead();           //判断蛇是否死亡
+void ShowGameOverUI();   //显示结束界面
+void MovingBody();       //蛇移动身体
+void Eating();           //吃
 
 typedef struct _SnakeBody
 {
@@ -32,7 +38,9 @@ struct Food
 }food;
 
 char name[20];
-int score = 0;
+int  score = 0;
+char click = 1;//这是ascii码
+int  speed=0
 
 int main()
 {
@@ -41,9 +49,9 @@ int main()
 	WelcomeUI();
 	DrawBorder();
 	CreateFood();
+	if(SnakeMoveControl()==0)
+		return 0;
 
-	getchar();
-	getchar();
 	return 0;
 }
 
@@ -155,4 +163,69 @@ label:
 	}
 	SetCursorXY(food.x,food.y);
 	printf("⊙");
+}
+
+int SnakeMoveControl()
+{
+	char c;
+	while(1)
+	{
+		if(IsDead()) return GameOver;//死亡
+		if(_kbhit())
+		{
+			click = _getch();
+		}
+		MovingBody();
+		Eating();
+	}
+	return 1;
+}
+
+bool IsDead()
+{
+	if(head->x == 0 || head->x == 56 || head->y == 0 || head->y == 26)
+	{
+		ShowGameOverUI();
+		return true;
+	}
+	snakeBody *p = head->next;//这是指向第二节身子的指针
+	while(1)
+	{
+		if(p->next == NULL)break;
+		if(head->x == p->x && head->y == p->y)
+		{
+			ShowGameOverUI();
+			return true;
+		}
+		p=p->next;
+	}
+
+	return false;
+}
+
+void ShowGameOverUI()
+{
+	system("cls");
+	SetCursorXY(15,10);
+	printf("/*****************************************/");
+	SetCursorXY(15,20);
+	printf("/*****************************************/");
+	SetCursorXY(18,14);
+	printf("Game Over      o(*￣V￣*)o");
+	SetCursorXY(20,16);
+	printf("Your Score is %d    xiuxiuxiu",score);
+	SetCursorXY(18,18);
+	printf("还不错哦，   继续努力o(n_n)o");
+	SetCursorXY(0,27);
+	system("pause");
+}
+
+void MovingBody()
+{
+	
+}
+
+void Eating()
+{
+	
 }
